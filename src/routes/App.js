@@ -8,9 +8,13 @@ import Success from '../containers/Success';
 import NotFound from '../containers/NotFound';
 import Layout from '../components/Layout';
 
+import AppContext from '../context/AppContext';
+import useInitialState from '../hooks/useInitialState';
+
 const App = () => {
+  const initialState = useInitialState();
   return (
-    <div>
+    <AppContext.Provider value={initialState}>
       <BrowserRouter>
         <Layout>
           <Switch>
@@ -23,7 +27,7 @@ const App = () => {
           </Switch>
         </Layout>
       </BrowserRouter>
-    </div>
+    </AppContext.Provider>
   );
 };
 
